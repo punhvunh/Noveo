@@ -14,4 +14,6 @@ public class AllureAnnotationConstants {
     public static final String CART_PAGE = "Cart page";
 
     public static final String SIG_IN_PAGE = "Sign in page";
+
+    public static final String SPRING_BOOT_CHECK = "Spring Boot check";
 }
