@@ -17,7 +17,9 @@ public interface PageService {
 
     void switchesToFrame(SelenideElement element, String elementName);
 
-    void  checksVisibilityAndNameOfElement(SelenideElement element, String elementName);
+    void checksVisibilityAndNameOfElement(SelenideElement element, String elementName);
+
+    void checksTheNumberOfSameElements(String element, int expectedCount, String elementName);
 
     void waitUntilPopUpMessageDisappearsAndSwitchesToIframe();
 }

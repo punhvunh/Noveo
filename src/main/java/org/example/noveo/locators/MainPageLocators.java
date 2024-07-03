@@ -10,11 +10,14 @@ import static com.codeborne.selenide.Selenide.$;
 import static org.example.noveo.constants.MainPageConstants.CONTACT_US_LINK;
 import static org.example.noveo.constants.MainPageConstants.IFRAME;
 import static org.example.noveo.constants.MainPageConstants.POP_UP_MESSAGE;
+import static org.example.noveo.constants.MainPageConstants.SIGN_IN_LINK;
 
 @UtilityClass
 public class MainPageLocators {
 
     private static final Random random = new Random();
+
+    public static final String POPULAR_PRODUCTS_XPATH = "//div[@class=\"products row\"]//article[@class=\"product-miniature js-product-miniature\"]";
 
     public static final SelenideElement popUpMessage = $(By.xpath("//div[@id='loadingMessage']//p[text()=\"" + POP_UP_MESSAGE + "\"]"));
 
@@ -27,4 +30,6 @@ public class MainPageLocators {
     public static final SelenideElement product = $(By.xpath("(//div[@class=\"products row\"]//div[@class=\"thumbnail-top\"])[" + random.nextInt(1,8) + "]"));
 
     public static final SelenideElement loadSpinner = $(By.xpath("//div[@class=\"loadingMessageWrapper\"]//div//img[@alt=\"loading\"]"));
+
+    public static final SelenideElement signInLink = $(By.xpath("//div[@class=\"user-info\"]//span[@class=\"hidden-sm-down\"][text()=\"" + SIGN_IN_LINK + "\"]"));
 }

@@ -16,4 +16,6 @@ public class MainPageConstants {
     public static final String PRODUCT = "Product";
 
     public static final String LOAD_SPINNER = "Load Spinner";
+
+    public static final String SIGN_IN_LINK = "Sign in";
 }

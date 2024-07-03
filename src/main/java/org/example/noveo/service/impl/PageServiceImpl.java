@@ -1,17 +1,19 @@
 package org.example.noveo.service.impl;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.RequiredArgsConstructor;
 import org.example.noveo.service.FluentWaitService;
 import org.example.noveo.service.PageService;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.springframework.stereotype.Service;
 
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 import static org.example.noveo.constants.MainPageConstants.IFRAME;
 import static org.example.noveo.constants.MainPageConstants.LOAD_SPINNER;
 import static org.example.noveo.constants.MainPageConstants.POP_UP_MESSAGE;
@@ -69,6 +71,13 @@ public class PageServiceImpl implements PageService {
     public void checksVisibilityAndNameOfElement(SelenideElement element, String elementName) {
         element.shouldBe(Condition.visible);
         checksNameOfElement(element, elementName);
+    }
+
+    @Override
+    public void checksTheNumberOfSameElements(String element, int expectedCount, String elementName) {
+        ElementsCollection elements = $$(By.xpath(element)).filter(Condition.visible);
+        assertEquals(expectedCount, elements.size(),
+                "Expected number of elements for " + elementName + ": " + expectedCount + ", but found: " + elements.size());
     }
 
     @Override
