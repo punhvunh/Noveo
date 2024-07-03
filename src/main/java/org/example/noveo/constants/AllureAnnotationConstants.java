@@ -10,4 +10,6 @@ public class AllureAnnotationConstants {
     public static final String WEB = "Web";
 
     public static final String MAIN_PAGE = "Main page";
+
+    public static final String CART_PAGE = "Cart page";
 }

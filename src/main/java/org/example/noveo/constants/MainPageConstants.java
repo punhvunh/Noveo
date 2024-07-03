@@ -12,4 +12,8 @@ public class MainPageConstants {
     public static final String CONTACT_US_HEADER = "CONTACT US";
 
     public static final String IFRAME = "Frame of demo shop";
+
+    public static final String PRODUCT = "Product";
+
+    public static final String LOAD_SPINNER = "Load Spinner";
 }

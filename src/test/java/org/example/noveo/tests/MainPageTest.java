@@ -14,7 +14,7 @@ class MainPageTest extends BaseTest {
     private MainPage mainPage;
 
     @Test
-    void testMainPage() {
+    void testClicksOnContactUsLinkAndSeesHeaderContactUs() {
         mainPage.clicksOnContactUsLinkAndSeesHeaderContactUs();
     }
 

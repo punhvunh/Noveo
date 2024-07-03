@@ -4,7 +4,6 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
 import org.example.noveo.service.FluentWaitService;
 import org.example.noveo.service.PageService;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +12,12 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.springframework.stereotype.Service;
 
 import static com.codeborne.selenide.Selenide.switchTo;
+import static org.example.noveo.constants.MainPageConstants.IFRAME;
+import static org.example.noveo.constants.MainPageConstants.LOAD_SPINNER;
+import static org.example.noveo.constants.MainPageConstants.POP_UP_MESSAGE;
+import static org.example.noveo.locators.MainPageLocators.iframe;
+import static org.example.noveo.locators.MainPageLocators.loadSpinner;
+import static org.example.noveo.locators.MainPageLocators.popUpMessage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Service
@@ -64,6 +69,16 @@ public class PageServiceImpl implements PageService {
     public void checksVisibilityAndNameOfElement(SelenideElement element, String elementName) {
         element.shouldBe(Condition.visible);
         checksNameOfElement(element, elementName);
+    }
+
+    @Override
+    @Step("Ждем пока высплвающее сообщение исчезнет и переключаемся в iframe")
+    public void waitUntilPopUpMessageDisappearsAndSwitchesToIframe() {
+        waitUntilElementAppear(popUpMessage, POP_UP_MESSAGE, 10);
+        elementIsNotVisible(popUpMessage, POP_UP_MESSAGE);
+        waitUntilElementDisappear(loadSpinner, LOAD_SPINNER, 10);
+        switchesToFrame(iframe, IFRAME);
+
     }
 
     @Step("Проверяем название элемента {elementName}")
