@@ -1,0 +1,4 @@
+properties:
+  browser:
+    browserName: FireFox
+    url: "https://demo.prestashop.com/#/en/front"

@@ -1,0 +1,48 @@
+plugins {
+    id "java"
+    id "io.qameta.allure" version "$qametaAllureVersion"
+    id "com.github.ben-manes.versions" version "$gitHubBenManesVersion"
+    id "io.spring.dependency-management" version "$springDependencyManagement"
+}
+
+repositories {
+    mavenCentral()
+}
+
+group "org.example.noveo"
+version "1.0-SNAPSHOT"
+
+dependencies {
+    implementation(
+            "org.springframework.boot:spring-boot-starter:$springFrameWorkBootVersion",
+            "io.qameta.allure:allure-junit5:$allureVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            "org.aspectj:aspectjweaver:$aspectjWeaverVersion",
+            "com.github.romankh3:image-comparison:$imageComparisonVersion",
+            "org.apache.commons:commons-lang3:$commonsLang3VersionVersion",
+            "org.yaml:snakeyaml:$snakeyamlVersion",
+            "org.projectlombok:lombok:$lombokVersion",
+            "org.springframework.boot:spring-boot-starter-test:$springFrameWorkBootVersion",
+            "commons-codec:commons-codec:$commonsCodecVersion",
+            "org.junit.platform:junit-platform-launcher:$junitPlatformLauncherVersion",
+            "io.github.bonigarcia:webdrivermanager:$webDriverManager",
+            "com.codeborne:selenide:$selenideVersion",
+    )
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+}
+
+allure {
+    version = allureVersion
+}
+
+test {
+    useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "passed", "skipped", "failed"
+            exceptionFormat "short"
+        }
+    }
+}
